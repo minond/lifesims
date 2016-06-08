@@ -19,6 +19,10 @@ class World extends Array {
             this.life.splice(this.life.indexOf(obj), 1);
         }
     }
+
+    tick() {
+        this.life.forEach(o => o.tick())
+    }
 }
 
 module.exports = World;

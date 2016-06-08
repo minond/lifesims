@@ -18,7 +18,8 @@ world.add(new Life('Ant', ANT_KNOWLEDGE));
 world.add(new Life('Ant', ANT_KNOWLEDGE));
 
 setInterval(() => {
-    world.life.forEach(o => o.tick())
+    d('tick');
+    world.tick();
 
     if (!world.life.length) {
         d('all life is gone');
