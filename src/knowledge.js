@@ -22,7 +22,7 @@ function random_death_knowledge(obj) {
 }
 
 function move_knowledge(obj) {
-    var last = obj.memory['move_knowledge'] || { x: obj.x, y: obj.y },
+    var last = obj.memory.move_knowledge || { x: obj.x, y: obj.y },
         next;
 
     if (obj.freeze) {

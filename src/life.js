@@ -29,7 +29,7 @@ class Life {
     }
 
     clone() {
-        var sibling = new Life(this.label, this.knowledge)
+        var sibling = new Life(this.label, this.knowledge);
         sibling.health = this.health;
         sibling.x = this.x;
         sibling.y = this.y;
