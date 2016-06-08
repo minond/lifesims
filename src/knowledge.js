@@ -4,16 +4,17 @@ const d = require('./utils').d;
 const rand = require('./utils').rand;
 const set = require('./utils').set;
 const unset = require('./utils').unset;
+const likelihood = require('./utils').likelihood;
 
 function asexual_reproduction_knowledge(obj) {
-    if (Math.random().toString().substr(0, 4) === '0.55') {
+    if (likelihood(4)) {
         d('%s is reproducing', obj.toString());
         obj.world.add(obj.clone());
     }
 }
 
 function random_death_knowledge(obj) {
-    if (Math.random().toString().substr(0, 4) === '0.55') {
+    if (likelihood(4)) {
         d('%s is randomly dying :(', obj.toString());
         obj.world.remove(obj);
         // XXX add food in same place

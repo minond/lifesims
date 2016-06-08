@@ -88,4 +88,8 @@ function d(...args) {
     console.log.apply(console, args);
 }
 
-module.exports = {id, has, set: set, unset, rand, d};
+function likelihood(chance) {
+    return Math.random().toString().substr(0, chance) === '0.555555'.substr(0, chance);
+}
+
+module.exports = {id, has, set: set, unset, rand, d, likelihood};
