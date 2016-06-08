@@ -74,6 +74,12 @@ function rand(list, exclude) {
     return val;
 }
 
+function clear() {
+    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
+    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
+    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
+    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
+}
 
 /**
  * @param {String} args*
@@ -92,4 +98,4 @@ function likelihood(chance) {
     return Math.random().toString().substr(0, chance) === '0.555555'.substr(0, chance);
 }
 
-module.exports = {id, has, set: set, unset, rand, d, likelihood};
+module.exports = {id, has, set: set, unset, rand, d, likelihood, clear};

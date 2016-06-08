@@ -3,6 +3,7 @@
 const Life = require('./life');
 const World = require('./world');
 const d = require('./utils').d;
+const clear = require('./utils').clear;
 
 const ANT_KNOWLEDGE = [
     require('./knowledge').move_knowledge,
@@ -19,7 +20,9 @@ world.add(new Life('Ant', ANT_KNOWLEDGE));
 
 setInterval(() => {
     d('tick');
+    clear();
     world.tick();
+    world.draw();
 
     if (!world.life.length) {
         d('all life is gone');
