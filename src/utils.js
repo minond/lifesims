@@ -143,5 +143,15 @@ function around_coors(coor) {
     ];
 }
 
-module.exports = {id, has, set: set, get: get,
+function clear() {
+    var lines = process.stdout.getWindowSize()[1];
+    var buffer = [];
+    for(var i = 0; i < lines; i++) {
+        buffer.push('\r\n');
+    }
+
+    console.log(buffer.join(''));
+}
+
+module.exports = {id, has, set: set, get: get, clear,
     unset, rand, d, likelihood, around_coors, rand_i};
