@@ -7,10 +7,14 @@ const unset = require('./utils').unset;
 const likelihood = require('./utils').likelihood;
 const around_coors = require('./utils').around_coors;
 
-function slow_death_knowledge(obj) {
+function hunger_knowledge(obj) {
+    d('%s needs to get to food', obj.toString());
     obj.health--;
+}
 
+function death_knowledge(obj) {
     if (!obj.health) {
+        d('%s is out of health and will now pass away', obj.toString());
         obj.world.remove(obj);
     }
 }
@@ -58,6 +62,7 @@ module.exports = {
         asexual_reproduction_knowledge,
         random_death_knowledge,
         move_knowledge,
-        slow_death_knowledge,
+        death_knowledge,
+        hunger_knowledge,
     ]
 };
