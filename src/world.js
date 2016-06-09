@@ -89,6 +89,7 @@ class World extends Array {
             }
         }
 
+        d('draw');
         console.log(buffer.join(''));
     }
 }
