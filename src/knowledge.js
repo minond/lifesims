@@ -52,5 +52,10 @@ module.exports = {
     asexual_reproduction_knowledge,
     random_death_knowledge,
     move_knowledge,
-    ANT_KNOWLEDGE: [asexual_reproduction_knowledge, random_death_knowledge, move_knowledge]
+
+    ANT_KNOWLEDGE: [
+        asexual_reproduction_knowledge,
+        random_death_knowledge,
+        move_knowledge,
+    ]
 };
