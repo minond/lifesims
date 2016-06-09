@@ -11,9 +11,16 @@ const unset = require('./utils').unset;
 const likelihood = require('./utils').likelihood;
 const around_coors = require('./utils').around_coors;
 
-function hunger_knowledge(obj) {
+function leaf_eating_knowledge(obj) {
     d('%s needs to get to food', obj.toString());
     obj.health--;
+
+    around_coors(obj).forEach(coor => {
+        if (has(get(obj.world, [coor.x, coor.y]), 'Leaf', true)) {
+            d('%s found food', obj.toString());
+            obj.health = obj.MAX_HEALTH;
+        }
+    });
 }
 
 function death_knowledge(obj) {
@@ -81,7 +88,7 @@ module.exports = {
         random_death_knowledge(4),
         move_knowledge,
         death_knowledge,
-        hunger_knowledge,
+        leaf_eating_knowledge,
     ],
 
     LEAF_KNOWLEDGE: [

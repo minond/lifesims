@@ -9,7 +9,7 @@ function id() {
 
 /**
  * @param {Object[]} holder
- * @param {Object} val
+ * @param {Object|String} val
  * @param {Boolean} [loose] (default: false)
  * @param {Object} [excluding]
  * @return {Boolean}
@@ -17,7 +17,7 @@ function id() {
 function has(holder, val, loose, excluding) {
     if (loose) {
         for (var i = 0, len = holder.length; i < len; i++) {
-            if (holder[i] instanceof val) {
+            if (typeof val !== 'string' ? holder[i] instanceof val : holder[i].label === val) {
                 if (!excluding) {
                     return true;
                 } else if (holder[i] !== excluding) {

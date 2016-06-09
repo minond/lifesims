@@ -11,14 +11,14 @@ const clear = require('./utils').clear;
 
 var world = new World();
 
-world.add(new Life('a', 'Ant', ANT_KNOWLEDGE));
-world.add(new Life('a', 'Ant', ANT_KNOWLEDGE));
-world.add(new Life('a', 'Ant', ANT_KNOWLEDGE));
-world.add(new Life('a', 'Ant', ANT_KNOWLEDGE));
-world.add(new Life('+', 'Leaf', LEAF_KNOWLEDGE));
-world.add(new Life('+', 'Leaf', LEAF_KNOWLEDGE));
-world.add(new Life('+', 'Leaf', LEAF_KNOWLEDGE));
-world.add(new Life('+', 'Leaf', LEAF_KNOWLEDGE));
+world.add(new Life('a', Life.ANT, ANT_KNOWLEDGE));
+world.add(new Life('a', Life.ANT, ANT_KNOWLEDGE));
+world.add(new Life('a', Life.ANT, ANT_KNOWLEDGE));
+world.add(new Life('a', Life.ANT, ANT_KNOWLEDGE));
+world.add(new Life('+', Life.LEAF, LEAF_KNOWLEDGE));
+world.add(new Life('+', Life.LEAF, LEAF_KNOWLEDGE));
+world.add(new Life('+', Life.LEAF, LEAF_KNOWLEDGE));
+world.add(new Life('+', Life.LEAF, LEAF_KNOWLEDGE));
 
 setInterval(() => {
     if (!world.life.length) {

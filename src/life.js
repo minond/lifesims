@@ -8,6 +8,8 @@ const d = require('./utils').d;
 
 class Life {
     constructor(simbol, label, knowledge) {
+        this.MAX_HEALTH = 100;
+
         this.id = id();
         this.simbol = simbol;
         this.label = label;
@@ -51,3 +53,5 @@ class Life {
 }
 
 module.exports = Life;
+module.exports.LEAF = 'Leaf';
+module.exports.ANT = 'Ant';
