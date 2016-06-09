@@ -11,13 +11,18 @@ function id() {
  * @param {Object[]} holder
  * @param {Object} val
  * @param {Boolean} [loose] (default: false)
+ * @param {Object} [excluding]
  * @return {Boolean}
  */
-function has(holder, val, loose) {
+function has(holder, val, loose, excluding) {
     if (loose) {
         for (var i = 0, len = holder.length; i < len; i++) {
             if (holder[i] instanceof val) {
-                return true;
+                if (!excluding) {
+                    return true;
+                } else if (holder[i] !== excluding) {
+                    return true;
+                }
             }
         }
 
@@ -25,6 +30,19 @@ function has(holder, val, loose) {
     } else {
         return holder.indexOf(val) !== -1;
     }
+}
+
+/**
+ * @param {Object[]} holder
+ * @param {Number[]|String[]} props
+ * @param {Array}
+ */
+function get(holder, props) {
+    for (var i = 0, len = props.length; i < len; i++) {
+        holder = holder[props[i]] || [];
+    }
+
+    return holder;
 }
 
 /**
@@ -74,17 +92,23 @@ function rand(list, exclude) {
     return val;
 }
 
-function clear() {
-    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
-    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
-    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
-    console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
+/**
+ * @param {Number} max
+ * @param {Number} min
+ * @return {Number}
+ */
+function rand_i(max, min) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
  * @param {String} args*
  */
 function d(...args) {
+    if (!process.env.DEBUG) {
+        return;
+    }
+
     if (typeof args[0] === 'string') {
         args[0] = 'DEBUG: ' + args[0];
     } else {
@@ -119,4 +143,5 @@ function around_coors(coor) {
     ];
 }
 
-module.exports = {id, has, set: set, unset, rand, d, likelihood, clear, around_coors};
+module.exports = {id, has, set: set, get: get,
+    unset, rand, d, likelihood, around_coors, rand_i};
