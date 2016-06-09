@@ -60,17 +60,20 @@ class World extends Array {
             }
         });
 
+        var box_h = '-',
+            box_v = '|';
+
         for (y = 0; y < span_y; y++) {
             if (y === 0 || y + 1 === span_y) {
                 // first/last
                 for (x = 0; x < span_x; x++) {
-                    buffer.push('-');
+                    buffer.push(box_h);
                 }
             } else {
                 for (x = 0; x < span_x; x++) {
                     if (x === 0 || x + 1 === span_x) {
                         // left/right
-                        buffer.push('|');
+                        buffer.push(box_v);
                     } else {
                         key = JSON.stringify([x, y]);
 

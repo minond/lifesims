@@ -48,4 +48,9 @@ function move_knowledge(obj) {
     obj.y = next.y;
 }
 
-module.exports = { asexual_reproduction_knowledge, random_death_knowledge, move_knowledge };
+module.exports = {
+    asexual_reproduction_knowledge,
+    random_death_knowledge,
+    move_knowledge,
+    ANT_KNOWLEDGE: [asexual_reproduction_knowledge, random_death_knowledge, move_knowledge]
+};
