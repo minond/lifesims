@@ -30,12 +30,14 @@ function random_asexual_reproduction_knowledge(obj) {
     }
 }
 
-function random_death_knowledge(obj) {
-    if (likelihood(4)) {
-        d('%s is randomly dying :(', obj.toString());
-        obj.world.remove(obj);
-        // XXX add food in same place
-    }
+function random_death_knowledge(chance) {
+    return function (obj) {
+        if (likelihood(chance)) {
+            d('%s is randomly dying :(', obj.toString());
+            obj.world.remove(obj);
+            // XXX add food in same place
+        }
+    };
 }
 
 function sibling_placement_knowledge(obj) {
@@ -76,7 +78,7 @@ function move_knowledge(obj) {
 module.exports = {
     ANT_KNOWLEDGE: [
         random_asexual_reproduction_knowledge,
-        random_death_knowledge,
+        random_death_knowledge(4),
         move_knowledge,
         death_knowledge,
         hunger_knowledge,
@@ -85,5 +87,6 @@ module.exports = {
     LEAF_KNOWLEDGE: [
         sibling_placement_knowledge,
         random_asexual_reproduction_knowledge,
+        random_death_knowledge(5),
     ],
 };
