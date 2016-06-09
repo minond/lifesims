@@ -52,14 +52,10 @@ class World extends Array {
         offset_x = span_x - padding / 2 - max_x;
 
         this.life.forEach(l => {
-            switch (l.label) {
-            case 'Ant':
-                lifeline[JSON.stringify([
-                    l.x + offset_x,
-                    l.y + offset_y,
-                ])] = 'a';
-                break;
-            }
+            lifeline[JSON.stringify([
+                l.x + offset_x,
+                l.y + offset_y,
+            ])] = l.simbol;
         });
 
         var box_h = '-',

@@ -7,8 +7,9 @@ const set = require('./utils').set;
 const d = require('./utils').d;
 
 class Life {
-    constructor(label, knowledge) {
+    constructor(simbol, label, knowledge) {
         this.id = id();
+        this.simbol = simbol;
         this.label = label;
         this.knowledge = shuffle(knowledge);
 
@@ -31,7 +32,7 @@ class Life {
     }
 
     clone() {
-        var sibling = new Life(this.label, this.knowledge);
+        var sibling = new Life(this.simbol, this.label, this.knowledge);
         sibling.health = this.health;
         sibling.x = this.x;
         sibling.y = this.y;
