@@ -94,8 +94,29 @@ function d(...args) {
     console.log.apply(console, args);
 }
 
+/**
+ * @param {Number} chance
+ * @return {Boolean}
+ */
 function likelihood(chance) {
     return Math.random().toString().substr(0, chance) === '0.555555'.substr(0, chance);
 }
 
-module.exports = {id, has, set: set, unset, rand, d, likelihood, clear};
+/**
+ * @param {Coor}
+ * @return {Coor[]}
+ */
+function around_coors(coor) {
+    return [
+        { x: coor.x - 1, y: coor.y - 1 }, // top left
+        { x: coor.x - 1, y: coor.y }, // left
+        { x: coor.x - 1, y: coor.y + 1 }, // bottom left
+        { x: coor.x, y: coor.y - 1 }, // top
+        { x: coor.x + 1, y: coor.y - 1 }, // top right
+        { x: coor.x + 1, y: coor.y }, // right
+        { x: coor.x + 1, y: coor.y + 1 }, // bottom right
+        { x: coor.x, y: coor.y + 1 }, // bottom
+    ];
+}
+
+module.exports = {id, has, set: set, unset, rand, d, likelihood, clear, around_coors};

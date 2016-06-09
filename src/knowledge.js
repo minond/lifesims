@@ -5,6 +5,7 @@ const rand = require('./utils').rand;
 const set = require('./utils').set;
 const unset = require('./utils').unset;
 const likelihood = require('./utils').likelihood;
+const around_coors = require('./utils').around_coors;
 
 function slow_death_knowledge(obj) {
     obj.health--;
@@ -38,22 +39,14 @@ function move_knowledge(obj) {
         return;
     }
 
-    next = rand([
-        { x: obj.x - 1, y: obj.y - 1 }, // top left
-        { x: obj.x - 1, y: obj.y }, // left
-        { x: obj.x - 1, y: obj.y + 1 }, // bottom left
-        { x: obj.x, y: obj.y - 1 }, // top
-        { x: obj.x + 1, y: obj.y - 1 }, // top right
-        { x: obj.x + 1, y: obj.y }, // right
-        { x: obj.x + 1, y: obj.y + 1 }, // bottom right
-        { x: obj.x, y: obj.y + 1 }, // bottom
-    ], last);
+    next = rand(around_coors(obj), last);
 
     d('%s moving from [%s, %s] to [%s, %s]', obj.toString(), last.x, last.y, next.x, next.y);
     unset(obj.world, [last.x, last.y], obj);
     set(obj.world, [next.x, next.y], obj);
     obj.x = next.x;
     obj.y = next.y;
+    obj.memory.move_knowledge = next;
 }
 
 module.exports = {
