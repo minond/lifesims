@@ -1,6 +1,7 @@
 'use strict';
 
 const has = require('./utils').has;
+const d = require('./utils').d;
 
 class World extends Array {
     constructor() {
@@ -21,6 +22,7 @@ class World extends Array {
     }
 
     tick() {
+        d('tick');
         this.life.forEach(o => o.tick());
     }
 

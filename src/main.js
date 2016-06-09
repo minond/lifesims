@@ -16,13 +16,12 @@ world.add(new Life('Ant', ANT_KNOWLEDGE));
 world.add(new Life('Ant', ANT_KNOWLEDGE));
 
 setInterval(() => {
-    d('tick');
-    clear();
-    world.tick();
-    world.draw();
-
     if (!world.life.length) {
         d('all life is gone');
         process.exit();
+    } else {
+        clear();
+        world.draw();
+        world.tick();
     }
-}, 100);
+}, 10);

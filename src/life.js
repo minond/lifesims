@@ -1,5 +1,7 @@
 'use strict';
 
+const shuffle = require('knuth-shuffle').knuthShuffle;
+
 const id = require('./utils').id;
 const set = require('./utils').set;
 const d = require('./utils').d;
@@ -8,7 +10,7 @@ class Life {
     constructor(label, knowledge) {
         this.id = id();
         this.label = label;
-        this.knowledge = knowledge;
+        this.knowledge = shuffle(knowledge);
 
         this.world = null;
         this.health = 100;

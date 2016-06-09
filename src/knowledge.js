@@ -6,6 +6,14 @@ const set = require('./utils').set;
 const unset = require('./utils').unset;
 const likelihood = require('./utils').likelihood;
 
+function slow_death_knowledge(obj) {
+    obj.health--;
+
+    if (!obj.health) {
+        obj.world.remove(obj);
+    }
+}
+
 function asexual_reproduction_knowledge(obj) {
     if (likelihood(4)) {
         d('%s is reproducing', obj.toString());
@@ -57,5 +65,6 @@ module.exports = {
         asexual_reproduction_knowledge,
         random_death_knowledge,
         move_knowledge,
+        slow_death_knowledge,
     ]
 };
