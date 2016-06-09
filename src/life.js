@@ -28,7 +28,13 @@ class Life {
     }
 
     tick() {
-        this.knowledge.forEach(knowledge => knowledge(this));
+        this.knowledge.forEach(knowledge => {
+            if (this.freeze) {
+                return;
+            }
+
+            knowledge(this);
+        });
     }
 
     clone() {
