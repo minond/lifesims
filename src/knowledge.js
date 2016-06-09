@@ -16,7 +16,7 @@ function leaf_eating_knowledge(obj) {
     obj.health--;
 
     around_coors(obj).forEach(coor => {
-        if (has(get(obj.world, [coor.x, coor.y]), 'Leaf', true)) {
+        if (has(get(obj.world, [coor.x, coor.y]), Life.LEAF, true)) {
             d('%s found food', obj.toString());
             obj.health = obj.MAX_HEALTH;
         }
