@@ -52,4 +52,4 @@ setInterval(() => {
         world.tick();
         world.draw();
     }
-}, 10);
+}, 1000/10);

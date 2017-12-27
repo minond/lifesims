@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @return {String}
  */
@@ -144,13 +142,8 @@ function around_coors(coor) {
 }
 
 function clear() {
-    var lines = process.stdout.getWindowSize()[1];
-    var buffer = [];
-    for(var i = 0; i < lines; i++) {
-        buffer.push('\r\n');
-    }
-
-    console.log(buffer.join(''));
+    process.stdout.write('\033[2J\033[3J')
+    process.stdout.write('\033[H')
 }
 
 module.exports = {id, has, set: set, get: get, clear,
