@@ -6,6 +6,28 @@ function id() {
 }
 
 /**
+ * Credit goes to this SO post:
+ * https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+ */
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+/**
  * @param {Object[]} holder
  * @param {Object|String} val
  * @param {Boolean} [loose] (default: false)
@@ -146,5 +168,5 @@ function clear() {
     process.stdout.write('\033[H')
 }
 
-module.exports = {id, has, set: set, get: get, clear,
+module.exports = {id, has, set: set, get: get, clear, shuffle,
     unset, rand, d, likelihood, around_coors, rand_i};

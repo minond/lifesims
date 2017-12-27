@@ -1,7 +1,6 @@
 'use strict';
 
-const shuffle = require('knuth-shuffle').knuthShuffle;
-
+const shuffle = require('./utils').shuffle;
 const id = require('./utils').id;
 const set = require('./utils').set;
 const d = require('./utils').d;
