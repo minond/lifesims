@@ -1,0 +1,1 @@
+An ant simulator. Mostly playing around with entity and module systems for games and simulations. To run this project just run `npm install && make` in your terminal.
